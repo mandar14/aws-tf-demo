@@ -9,3 +9,6 @@ Community module for AWS VPC helps you to create VPC and other related networkin
 - Autoscalaing group <br />
 - EC2 tasks <br />
 - paasing of role
+
+#### High-level design|
+![HLD](https://github.com/mandar14/aws-tf-demo/blob/master/MK%20(5).png?raw=true)
