@@ -1,14 +1,19 @@
 # Project A
-Project is independant terraform project, it showcase the use of aws module "VPC".\
-Community module for AWS VPC helps you to create VPC and other related networking component based of configuration option used in module.\
-<br />This typical code snipit creates VPC with Public-private subnets, route-table, Internet Gateway, NatGateway, VPC endpoint for S3 service using vpc module.
-<br /><br /> The code also uses individual aws resource definations to  create security groups, rds database with more granual control
+Project A is independant terraform project, it showcase the use of aws modules and resources\
+
+#### main.tf
+Creates s3-bucket,security-groups,rds-db and VPC networking(using module)
+#### iam.tf
+Reads policy template and Creates iam-role for ec2-service, policy and instance profile
+#### mk-s3-rds-policy.json
+Policy template in json format
+#### scaling.tf
+Defines ELB and Autoscaling resources using aws-terraform module
+#### state.tf
+Defines terraform state backend config
+#### variable.tf
+variables to be defined for project
 
 
-### **To Do** <br />
-- Autoscalaing group <br />
-- EC2 tasks <br />
-- paasing of role
-
-#### High-level design|
-![HLD](https://github.com/mandar14/aws-tf-demo/blob/master/MK%20(5).png?raw=true)
+#### High-level design
+![HLD](https://github.com/mandar14/aws-tf-demo/blob/master/proj-a/hld_diagram.png?raw=true)
