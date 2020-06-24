@@ -31,6 +31,11 @@ module "elb" {
   }
 }
 
+output "dns"{
+  value = module.elb.this_elb_dns_name
+}
+
+
 data "aws_ami" "ubuntu"{
   most_recent = true
   owners = ["099720109477"]
@@ -83,9 +88,10 @@ module "asg" {
 		sudo apt-get install -y apache2
 		sudo systemctl start apache2
 		sudo systemctl enable apache2
-		echo "<h1>Deployed via Terraform by MK ^_^</h1>" | sudo tee /var/www/html/index.html
+		echo "<h1>Deployed via Terraform by MK... \(^_^)/</h1>" | sudo tee /var/www/html/index.html
 	EOF
-# service_linked_role = to be created
+  key_name = "mk"
+  iam_instance_profile = aws_iam_instance_profile.mk_asg_profile.name
 
 
 #----auto scaling----

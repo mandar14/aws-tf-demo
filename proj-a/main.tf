@@ -44,7 +44,7 @@ resource "aws_security_group" "web" {
     from_port = 22
     to_port   = 22
     protocol  = "tcp"
-    cidr_blocks = ["18.157.215.15/32"]
+    cidr_blocks = ["${var.vpc-prefix}.0.0/16","18.157.215.15/32"]
   }
   
   egress {
@@ -73,7 +73,18 @@ resource "aws_security_group" "db-access" {
   }
 }
 
-### Database ###
+### Datastores & Databases ###
+
+resource "aws_s3_bucket" "datalake" {
+  bucket = var.bucket-name
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+}
 
 resource "aws_db_subnet_group" "mkdb"{
   name = "mkdb"
