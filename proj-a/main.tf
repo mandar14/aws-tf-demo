@@ -102,5 +102,6 @@ resource "aws_db_instance" "db1" {
   
   vpc_security_group_ids = [aws_security_group.db-access.id]
   db_subnet_group_name = aws_db_subnet_group.mkdb.id
-
+  skip_final_snapshot = true
+  final_snapshot_identifier = "snap-001"
 }  
